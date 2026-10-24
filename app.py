@@ -2,7 +2,7 @@ import pandas as pd
 import streamlit as st
 from traffic_game_theory import ROUTES, simulate
 
-st.set_page_config(page_title="UrbanFlow | Traffic Game Theory", page_icon="🚦", layout="wide", initial_sidebar_state="expanded")
+st.set_page_config(page_title="Game-Theoretic Modeling of Traffic Route Selection in Smart Cities", page_icon="🚦", layout="wide", initial_sidebar_state="expanded")
 
 st.markdown("""
 <style>
@@ -18,7 +18,7 @@ h1 { letter-spacing:-1.8px; font-weight:800; }
 [data-testid="stMetricValue"] { color:#f1f8ff !important; font-weight:800; }
 .eyebrow { color:#55d6d0; text-transform:uppercase; letter-spacing:2.5px; font-size:11px; font-weight:800; }
 .hero { padding:26px 28px; border:1px solid #244158; border-radius:22px; background:linear-gradient(115deg,rgba(19,45,65,.98),rgba(10,24,38,.96)); margin:0 0 22px 0; position:relative; overflow:hidden; }
-.hero h1 { font-size:clamp(30px,4vw,46px); line-height:1.08; margin:8px 0 12px; }
+.hero h1 { font-size:clamp(25px,3vw,38px); line-height:1.12; margin:8px 0 12px; }
 .hero p { color:#afc3d5; max-width:700px; font-size:15px; line-height:1.7; margin-bottom:0; }
 .signal { display:inline-block; padding:6px 10px; border-radius:99px; border:1px solid #2a5b64; color:#79e5d8; background:#10333a; font-size:11px; font-weight:800; letter-spacing:1px; }
 .section-label { color:#dceaf6; font-size:20px; font-weight:800; letter-spacing:-.4px; margin:12px 0 4px; }
@@ -42,7 +42,7 @@ hr { border-color:#20364b; }
 """, unsafe_allow_html=True)
 
 with st.sidebar:
-    st.markdown("<div class=\"eyebrow\">URBANFLOW / CONTROL ROOM</div>", unsafe_allow_html=True)
+    st.markdown("<div class=\"eyebrow\">TRAFFIC GAME THEORY / CONTROL ROOM</div>", unsafe_allow_html=True)
     st.markdown("## Simulation controls")
     st.caption("Tune the traffic scenario, then run the model.")
     drivers = st.slider("Driver population", 10, 300, 100, 10)
@@ -73,7 +73,7 @@ st.markdown("""
 <div class="hero">
   <div class="eyebrow">SMART CITY SYSTEMS · GAME THEORY</div>
   <div style="display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin-top:10px;">
-    <h1 style="margin:0;">UrbanFlow</h1><span class="signal">● SIMULATION ACTIVE</span>
+    <h1 style="margin:0;">Game-Theoretic Modeling of Traffic Route Selection in Smart Cities</h1><span class="signal">● SIMULATION ACTIVE</span>
   </div>
   <p>Model how self-interested drivers distribute across a road network. As route load increases, travel time changes — creating a strategic game where every route choice affects the system.</p>
 </div>
