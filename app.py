@@ -54,7 +54,7 @@ with st.sidebar:
     st.markdown("<div class=\"info-box\">Sequential best-response dynamics<br>3 parallel routes<br>Linear congestion cost</div>", unsafe_allow_html=True)
     st.caption("All route parameters are illustrative, not live traffic data.")
 
-if "simulation" not in st.session_state:
+if "simulation" not in st.session_state or "sim_settings" not in st.session_state:
     st.session_state.simulation = simulate(int(drivers), int(seed), int(sweeps))
     st.session_state.sim_settings = (int(drivers), int(seed), int(sweeps))
 if run:
