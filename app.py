@@ -7,42 +7,42 @@ st.set_page_config(page_title="Game-Theoretic Modeling of Traffic Route Selectio
 st.markdown("""
 <style>
 @import url("https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap");
-:root { --bg:#07111d; --panel:#101f30; --line:#20364b; --muted:#9ab0c4; --text:#eef6ff; --cyan:#55d6d0; --blue:#65aaff; --amber:#ffbf69; }
-.stApp { background: radial-gradient(ellipse at 70% 0%, #142c42 0%, #07111d 48%); color:var(--text); font-family:"Manrope",sans-serif; }
-[data-testid="stSidebar"] { background:#0b1725; border-right:1px solid #20364b; }
+:root { --bg:#ffffff; --panel:#ffffff; --line:#e2e8f0; --muted:#64748b; --text:#172033; --cyan:#0891b2; --blue:#2563eb; --amber:#d97706; }
+.stApp { background:linear-gradient(180deg,#ffffff 0%,#f7fafc 100%); color:var(--text); font-family:"Manrope",sans-serif; }
+[data-testid="stSidebar"] { background:#f1f5f9; border-right:1px solid #dbe4ee; }
 [data-testid="stSidebar"] * { font-family:"Manrope",sans-serif; }
 h1,h2,h3,p,label { font-family:"Manrope",sans-serif; }
 h1 { letter-spacing:-1.8px; font-weight:800; }
-[data-testid="stMetric"] { background:linear-gradient(145deg,#12273a,#0d1b2a); border:1px solid #244158; padding:18px 20px; border-radius:16px; }
-[data-testid="stMetricLabel"] { color:#9ab0c4 !important; }
-[data-testid="stMetricValue"] { color:#f1f8ff !important; font-weight:800; }
-.eyebrow { color:#55d6d0; text-transform:uppercase; letter-spacing:2.5px; font-size:11px; font-weight:800; }
-.hero { padding:26px 28px; border:1px solid #244158; border-radius:22px; background:linear-gradient(115deg,rgba(19,45,65,.98),rgba(10,24,38,.96)); margin:0 0 22px 0; position:relative; overflow:hidden; }
+[data-testid="stMetric"] { background:#ffffff; border:1px solid #e2e8f0; box-shadow:0 5px 20px rgba(15,23,42,.045); padding:18px 20px; border-radius:16px; }
+[data-testid="stMetricLabel"] { color:#64748b !important; }
+[data-testid="stMetricValue"] { color:#172033 !important; font-weight:800; }
+.eyebrow { color:#0891b2; text-transform:uppercase; letter-spacing:2.5px; font-size:11px; font-weight:800; }
+.hero { padding:26px 28px; border:1px solid #dbeafe; border-radius:22px; background:linear-gradient(115deg,#effaff,#ffffff 72%); box-shadow:0 10px 35px rgba(15,23,42,.06); margin:0 0 22px 0; position:relative; overflow:hidden; }
 .hero h1 { font-size:clamp(25px,3vw,38px); line-height:1.12; margin:8px 0 12px; }
-.hero p { color:#afc3d5; max-width:700px; font-size:15px; line-height:1.7; margin-bottom:0; }
-.signal { display:inline-block; padding:6px 10px; border-radius:99px; border:1px solid #2a5b64; color:#79e5d8; background:#10333a; font-size:11px; font-weight:800; letter-spacing:1px; }
-.section-label { color:#dceaf6; font-size:20px; font-weight:800; letter-spacing:-.4px; margin:12px 0 4px; }
-.section-sub { color:#8da6bb; font-size:13px; margin-bottom:14px; }
-.route-card { border:1px solid #243d53; background:linear-gradient(145deg,#102237,#0b1928); border-radius:16px; padding:17px 18px; min-height:150px; }
+.hero p { color:#526477; max-width:700px; font-size:15px; line-height:1.7; margin-bottom:0; }
+.signal { display:inline-block; padding:6px 10px; border-radius:99px; border:1px solid #a7f3d0; color:#047857; background:#ecfdf5; font-size:11px; font-weight:800; letter-spacing:1px; }
+.section-label { color:#172033; font-size:20px; font-weight:800; letter-spacing:-.4px; margin:12px 0 4px; }
+.section-sub { color:#64748b; font-size:13px; margin-bottom:14px; }
+.route-card { border:1px solid #e2e8f0; background:linear-gradient(145deg,#ffffff,#f8fafc); box-shadow:0 6px 22px rgba(15,23,42,.04); border-radius:16px; padding:17px 18px; min-height:150px; }
 .route-top { display:flex; align-items:center; justify-content:space-between; margin-bottom:15px; }
-.route-name { color:#f2f8ff; font-size:15px; font-weight:800; }
+.route-name { color:#172033; font-size:15px; font-weight:800; }
 .route-dot { width:9px; height:9px; display:inline-block; border-radius:50%; margin-right:7px; }
-.route-value { color:#f5faff; font-size:28px; font-weight:800; letter-spacing:-1px; }
-.route-caption { color:#8da6bb; font-size:12px; margin-top:3px; }
-.mini-bar { height:5px; background:#23384a; border-radius:8px; margin-top:14px; overflow:hidden; }
+.route-value { color:#172033; font-size:28px; font-weight:800; letter-spacing:-1px; }
+.route-caption { color:#64748b; font-size:12px; margin-top:3px; }
+.mini-bar { height:5px; background:#e2e8f0; border-radius:8px; margin-top:14px; overflow:hidden; }
 .mini-fill { height:5px; border-radius:8px; }
-.info-box { background:#0d2030; border:1px solid #244158; border-radius:14px; padding:16px 18px; color:#b5c9da; font-size:13px; line-height:1.65; }
-.mono { font-family:"DM Mono",monospace; color:#75ddd7; }
+.info-box { background:#f8fafc; border:1px solid #e2e8f0; border-radius:14px; padding:16px 18px; color:#475569; font-size:13px; line-height:1.65; }
+.mono { font-family:"DM Mono",monospace; color:#0891b2; }
 div[data-testid="stDataFrame"] { border:1px solid #20364b; border-radius:12px; overflow:hidden; }
-div.stButton > button { border-radius:10px; border:1px solid #55d6d0; background:#55d6d0; color:#06141d; font-weight:800; padding:10px 16px; }
-div.stButton > button:hover { background:#83eee5; border-color:#83eee5; color:#06141d; }
-div[data-testid="stDownloadButton"] button { border-radius:9px; border:1px solid #35536b; background:#12273a; color:#eaf5ff; }
-hr { border-color:#20364b; }
+div.stButton > button { border-radius:10px; border:1px solid #0891b2; background:#0891b2; color:#ffffff; font-weight:800; padding:10px 16px; }
+div.stButton > button:hover { background:#0e7490; border-color:#0e7490; color:#ffffff; }
+div[data-testid="stDownloadButton"] button { border-radius:9px; border:1px solid #cbd5e1; background:#ffffff; color:#172033; }
+hr { border-color:#e2e8f0; }\n@keyframes trafficPulse { 0%,100% { box-shadow:0 0 0 0 rgba(8,145,178,.0); } 50% { box-shadow:0 0 0 7px rgba(8,145,178,.12); } }\n.signal { animation:trafficPulse 2.8s ease-in-out infinite; }\n.route-card { transition:transform .22s ease, box-shadow .22s ease; }\n.route-card:hover { transform:translateY(-4px); box-shadow:0 14px 30px rgba(15,23,42,.09); }\n.stApp, [data-testid="stSidebar"] { cursor: auto; }\n/* Traffic-light cursor fallback: CSS cursor support for data URLs varies by browser. */\n.stApp button, .stApp a, .stApp input, .stApp [role="slider"] { cursor:pointer; }
 </style>
 """, unsafe_allow_html=True)
 
 with st.sidebar:
-    st.markdown("<div class=\"eyebrow\">TRAFFIC GAME THEORY / CONTROL ROOM</div>", unsafe_allow_html=True)
+    st.markdown("<div class=\"eyebrow\">🚦 TRAFFIC GAME THEORY / CONTROL ROOM</div>", unsafe_allow_html=True)
     st.markdown("## Simulation controls")
     st.caption("Tune the traffic scenario, then run the model.")
     drivers = st.slider("Driver population", 10, 300, 100, 10)
@@ -73,7 +73,7 @@ st.markdown("""
 <div class="hero">
   <div class="eyebrow">SMART CITY SYSTEMS · GAME THEORY</div>
   <div style="display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin-top:10px;">
-    <h1 style="margin:0;">Game-Theoretic Modeling of Traffic Route Selection in Smart Cities</h1><span class="signal">● SIMULATION ACTIVE</span>
+    <span style="font-size:34px;line-height:1;filter:drop-shadow(0 3px 4px rgba(15,23,42,.12));">🚦</span><h1 style="margin:0;">Game-Theoretic Modeling of Traffic Route Selection in Smart Cities</h1><span class="signal">● SIMULATION ACTIVE</span>
   </div>
   <p>Model how self-interested drivers distribute across a road network. As route load increases, travel time changes — creating a strategic game where every route choice affects the system.</p>
 </div>
@@ -108,12 +108,12 @@ with left:
     st.markdown("<div class=\"section-label\">02 / Driver allocation</div>", unsafe_allow_html=True)
     st.markdown("<div class=\"section-sub\">How the population is distributed across routes.</div>", unsafe_allow_html=True)
     distribution = pd.DataFrame({"Drivers": [int(counts.get(r, 0)) for r in ROUTES]}, index=list(ROUTES))
-    st.bar_chart(distribution, color="#65aaff", height=300)
+    st.bar_chart(distribution, color="#2563eb", height=300)
 with right:
     st.markdown("<div class=\"section-label\">03 / System travel-time trend</div>", unsafe_allow_html=True)
     st.markdown("<div class=\"section-sub\">Average estimated travel time recorded during driver updates.</div>", unsafe_allow_html=True)
     trend = history.drop_duplicates("update").set_index("update")[["average_travel_time"]]
-    st.line_chart(trend, color="#55d6d0", height=300)
+    st.line_chart(trend, color="#0891b2", height=300)
 
 st.markdown("<div class=\"section-label\">04 / Route cost model</div>", unsafe_allow_html=True)
 st.markdown("<div class=\"section-sub\">Travel time = base time + congestion factor × drivers on route.</div>", unsafe_allow_html=True)
