@@ -26,7 +26,24 @@ st.markdown("""
 [data-testid="stSidebar"] input,
 [data-testid="stSidebar"] button,
 [data-testid="stSidebar"] [data-baseweb="input"] * {
-  color:#111827 !important;
+  color:#ffffff !important;
+}
+/* The numeric random-seed input uses a dark fill: force high-contrast white text. */
+[data-testid="stSidebar"] [data-testid="stNumberInput"] input {
+  color:#ffffff !important;
+  -webkit-text-fill-color:#ffffff !important;
+  caret-color:#ffffff !important;
+  background-color:#101116 !important;
+}
+[data-testid="stSidebar"] [data-testid="stNumberInput"] button {
+  color:#ffffff !important;
+  -webkit-text-fill-color:#ffffff !important;
+}
+[data-testid="stSidebar"] [data-testid="stNumberInput"] [data-baseweb="input"] {
+  background-color:#101116 !important;
+}
+[data-testid="stSidebar"] [data-testid="stNumberInput"] [data-baseweb="input"] div {
+  color:#ffffff !important;
 }
 [data-testid="stSidebar"] [data-testid="stWidgetLabel"] {
   color:#111827 !important;
