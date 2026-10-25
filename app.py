@@ -129,8 +129,8 @@ m3.metric("Total driver-time", f"{total_time:.1f} min")
 m4.metric("Stability check", "Reached" if converged else "Sweep limit")
 
 st.markdown("<div class=\"section-label\">01 / Route network status</div>", unsafe_allow_html=True)
-st.markdown("<div class=\"section-sub\">Final load and estimated travel time for each alternative route.</div>", unsafe_allow_html=True)
-route_colors = {"Route A": "#55d6d0", "Route B": "#65aaff", "Route C": "#ffbf69"}
+st.markdown("<div class=\"section-sub\">Illustrative base drive-time estimates from MUJ to three Jaipur destinations; congestion is simulated, not live.</div>", unsafe_allow_html=True)
+route_colors = {list(ROUTES)[0]: "#55d6d0", list(ROUTES)[1]: "#65aaff", list(ROUTES)[2]: "#ffbf69"}
 route_cards = st.columns(3)
 for col, route in zip(route_cards, ROUTES):
     n = int(counts.get(route, 0))
@@ -142,7 +142,7 @@ for col, route in zip(route_cards, ROUTES):
         st.markdown(f"""<div class="route-card">
           <div class="route-top"><span class="route-name"><span class="route-dot" style="background:{color}"></span>{route}</span><span style="color:#8da6bb;font-size:12px;">{share:.1f}% load</span></div>
           <div class="route-value">{travel:.2f}<span style="font-size:13px;color:#9ab0c4;font-weight:500;"> min</span></div>
-          <div class="route-caption">{n} drivers assigned · base {params["base_time"]:.1f} min</div>
+          <div class="route-caption">{n} drivers assigned · approx. base {params["base_time"]:.0f} min</div>
           <div class="mini-bar"><div class="mini-fill" style="width:{share:.1f}%;background:{color};"></div></div>
         </div>""", unsafe_allow_html=True)
 
@@ -159,11 +159,11 @@ with right:
     st.line_chart(trend, color="#0891b2", height=300)
 
 st.markdown("<div class=\"section-label\">04 / Route cost model</div>", unsafe_allow_html=True)
-st.markdown("<div class=\"section-sub\">Travel time = base time + congestion factor × drivers on route.</div>", unsafe_allow_html=True)
+st.markdown("<div class=\"section-sub\">Estimated travel time = approximate base time + congestion factor × drivers on route.</div>", unsafe_allow_html=True)
 rows = []
 for route, params in ROUTES.items():
     n = int(counts.get(route, 0))
-    rows.append({"Route": route, "Base time (min)": params["base_time"], "Congestion factor": params["congestion_factor"], "Drivers": n, "Estimated time (min)": round(params["base_time"] + params["congestion_factor"] * n, 2)})
+    rows.append({"Route": route, "Approx. base drive time (min)": params["base_time"], "Congestion factor": params["congestion_factor"], "Drivers": n, "Estimated time (min)": round(params["base_time"] + params["congestion_factor"] * n, 2)})
 st.dataframe(pd.DataFrame(rows), use_container_width=True, hide_index=True)
 
 with st.expander("View driver-level assignments and export data"):
@@ -173,5 +173,5 @@ with st.expander("View driver-level assignments and export data"):
     d2.download_button("↓  Simulation history CSV", history.to_csv(index=False).encode("utf-8"), "simulation_history.csv", "text/csv", use_container_width=True)
 
 st.markdown("---")
-st.markdown("""<div class="info-box"><span class="mono">GAME THEORY NOTE</span><br>A stable outcome means no driver switched routes during a full sweep. It is interpreted as a Nash equilibrium only if no individual driver can improve their own travel time by unilaterally changing routes. This simulation uses simplified illustrative route costs and does not represent live city traffic.</div>""", unsafe_allow_html=True)
+st.markdown("""<div class="info-box"><span class="mono">GAME THEORY NOTE</span><br>A stable outcome means no driver switched routes during a full sweep. It is interpreted as a Nash equilibrium only if no individual driver can improve their own travel time by unilaterally changing routes. Destination labels are real Jaipur places, but base times are approximate reference estimates, not live Google Maps traffic. Congestion is simulated by the model.</div>""", unsafe_allow_html=True)
 st.caption(f"Run configuration: {used_settings[0]} drivers · seed {used_settings[1]} · max {used_settings[2]} sweeps")
