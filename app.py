@@ -10,7 +10,27 @@ st.markdown("""
 :root { --bg:#ffffff; --panel:#ffffff; --line:#e2e8f0; --muted:#64748b; --text:#172033; --cyan:#0891b2; --blue:#2563eb; --amber:#d97706; }
 .stApp { background:linear-gradient(180deg,#ffffff 0%,#f7fafc 100%); color:var(--text); font-family:"Manrope",sans-serif; }
 [data-testid="stSidebar"] { background:#f1f5f9; border-right:1px solid #dbe4ee; }
-[data-testid="stSidebar"] * { font-family:"Manrope",sans-serif; }
+[data-testid="stSidebar"] * { font-family:"Manrope",sans-serif; color:#111827 !important; }
+[data-testid="stSidebar"] label,
+[data-testid="stSidebar"] p,
+[data-testid="stSidebar"] span,
+[data-testid="stSidebar"] div,
+[data-testid="stSidebar"] [data-testid="stMarkdownContainer"],
+[data-testid="stSidebar"] [data-testid="stWidgetLabel"] p {
+  color:#111827 !important;
+  opacity:1 !important;
+}
+[data-testid="stSidebar"] [data-testid="stSlider"] [data-testid="stMarkdownContainer"] * {
+  color:#111827 !important;
+}
+[data-testid="stSidebar"] input,
+[data-testid="stSidebar"] button,
+[data-testid="stSidebar"] [data-baseweb="input"] * {
+  color:#111827 !important;
+}
+[data-testid="stSidebar"] [data-testid="stWidgetLabel"] {
+  color:#111827 !important;
+}
 h1,h2,h3,p,label { font-family:"Manrope",sans-serif; }
 h1 { letter-spacing:-1.8px; font-weight:800; }
 [data-testid="stMetric"] { background:#ffffff; border:1px solid #e2e8f0; box-shadow:0 5px 20px rgba(15,23,42,.045); padding:18px 20px; border-radius:16px; }
