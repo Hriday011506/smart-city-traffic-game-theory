@@ -37,7 +37,13 @@ div[data-testid="stDataFrame"] { border:1px solid #20364b; border-radius:12px; o
 div.stButton > button { border-radius:10px; border:1px solid #0891b2; background:#0891b2; color:#ffffff; font-weight:800; padding:10px 16px; }
 div.stButton > button:hover { background:#0e7490; border-color:#0e7490; color:#ffffff; }
 div[data-testid="stDownloadButton"] button { border-radius:9px; border:1px solid #cbd5e1; background:#ffffff; color:#172033; }
-hr { border-color:#e2e8f0; }\n@keyframes trafficPulse { 0%,100% { box-shadow:0 0 0 0 rgba(8,145,178,.0); } 50% { box-shadow:0 0 0 7px rgba(8,145,178,.12); } }\n.signal { animation:trafficPulse 2.8s ease-in-out infinite; }\n.route-card { transition:transform .22s ease, box-shadow .22s ease; }\n.route-card:hover { transform:translateY(-4px); box-shadow:0 14px 30px rgba(15,23,42,.09); }\n.stApp, [data-testid="stSidebar"] { cursor: auto; }\n/* Traffic-light cursor fallback: CSS cursor support for data URLs varies by browser. */\n.stApp button, .stApp a, .stApp input, .stApp [role="slider"] { cursor:pointer; }
+hr { border-color:#e2e8f0; }\n@keyframes trafficPulse { 0%,100% { box-shadow:0 0 0 0 rgba(8,145,178,.0); } 50% { box-shadow:0 0 0 7px rgba(8,145,178,.12); } }\n.signal { animation:trafficPulse 2.8s ease-in-out infinite; }\n.route-card { transition:transform .22s ease, box-shadow .22s ease; }\n.route-card:hover { transform:translateY(-4px); box-shadow:0 14px 30px rgba(15,23,42,.09); }\n.stApp, [data-testid="stSidebar"] { cursor: auto; }\n/* Traffic-light cursor: SVG data cursor with a standard fallback. */
+.stApp, .stApp * {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='48' viewBox='0 0 32 48'%3E%3Crect x='5' y='1' width='22' height='43' rx='10' fill='%231e293b' stroke='%230891b2' stroke-width='2'/%3E%3Ccircle cx='16' cy='11' r='5' fill='%23ef4444' stroke='%23fecaca' stroke-width='1'/%3E%3Ccircle cx='16' cy='22' r='5' fill='%23f59e0b' stroke='%23fef3c7' stroke-width='1'/%3E%3Ccircle cx='16' cy='33' r='5' fill='%2322c55e' stroke='%23bbf7d0' stroke-width='1'/%3E%3C/svg%3E") 16 4, auto;
+}
+.stApp button, .stApp a, .stApp input, .stApp [role="slider"] {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='48' viewBox='0 0 32 48'%3E%3Crect x='5' y='1' width='22' height='43' rx='10' fill='%231e293b' stroke='%230891b2' stroke-width='2'/%3E%3Ccircle cx='16' cy='11' r='5' fill='%23ef4444' stroke='%23fecaca' stroke-width='1'/%3E%3Ccircle cx='16' cy='22' r='5' fill='%23f59e0b' stroke='%23fef3c7' stroke-width='1'/%3E%3Ccircle cx='16' cy='33' r='5' fill='%2322c55e' stroke='%23bbf7d0' stroke-width='1'/%3E%3C/svg%3E") 16 4, pointer;
+}\n.stApp button, .stApp a, .stApp input, .stApp [role="slider"] { cursor:pointer; }
 </style>
 """, unsafe_allow_html=True)
 
