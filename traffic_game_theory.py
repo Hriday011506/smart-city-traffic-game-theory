@@ -9,10 +9,12 @@ import pandas as pd
 BASE_DIR = Path(__file__).resolve().parent
 RESULTS_DIR = BASE_DIR / "results"
 PLOTS_DIR = BASE_DIR / "plots"
+# All options connect the same origin and destination. Times/factors are
+# illustrative assumptions, not live Google Maps measurements.
 ROUTES = {
-    "MUJ → C-Scheme": {"base_time": 35.0, "congestion_factor": 0.18},
-    "MUJ → Malviya Nagar": {"base_time": 37.0, "congestion_factor": 0.10},
-    "MUJ → Pacific Mall (Mansarovar)": {"base_time": 40.0, "congestion_factor": 0.04},
+    "MUJ → Pacific Mall (Route A)": {"base_time": 40.0, "congestion_factor": 0.18},
+    "MUJ → Pacific Mall (Route B)": {"base_time": 42.0, "congestion_factor": 0.10},
+    "MUJ → Pacific Mall (Route C)": {"base_time": 44.0, "congestion_factor": 0.04},
 }
 
 def route_cost(route, load):
@@ -80,7 +82,7 @@ def make_plots(history, assignments):
     counts = [int(last["route_a_drivers"]), int(last["route_b_drivers"]), int(last["route_c_drivers"])]
     fig, ax = plt.subplots(figsize=(8, 5))
     ax.bar(labels, counts)
-    ax.set(title="Final Driver Distribution Across Jaipur Destinations", xlabel="Destination route", ylabel="Drivers")
+    ax.set(title="Final Driver Distribution: MUJ to Pacific Mall", xlabel="Alternative route", ylabel="Drivers")
     ax.grid(axis="y", alpha=0.25); fig.tight_layout()
     fig.savefig(PLOTS_DIR / "final_route_distribution.png", dpi=160); plt.close(fig)
     series = history.drop_duplicates("update")
@@ -92,7 +94,7 @@ def make_plots(history, assignments):
     used = assignments.groupby("selected_route").agg(estimated_travel_time=("estimated_travel_time", "first")).reindex(labels)
     fig, ax = plt.subplots(figsize=(8, 5))
     ax.bar(used.index, used["estimated_travel_time"])
-    ax.set(title="Estimated Travel Time by Used Route", xlabel="Destination route", ylabel="Estimated minutes")
+    ax.set(title="Estimated Travel Time: MUJ to Pacific Mall", xlabel="Alternative route", ylabel="Estimated minutes")
     ax.grid(axis="y", alpha=0.25); fig.tight_layout()
     fig.savefig(PLOTS_DIR / "final_route_travel_times.png", dpi=160); plt.close(fig)
 
