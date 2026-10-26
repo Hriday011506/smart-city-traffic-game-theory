@@ -4,7 +4,7 @@ A Python simulation and interactive dashboard exploring congestion games: driver
 
 ## Features
 - Sequential best-response dynamics
-- Three illustrative alternative routes
+- Three illustrative alternative routes from Manipal University Jaipur (MUJ) to Pacific Mall, Mansarovar
 - Route distribution and average-travel-time charts
 - CSV exports for assignments and simulation history
 - Streamlit dashboard with adjustable simulation settings
@@ -12,13 +12,13 @@ A Python simulation and interactive dashboard exploring congestion games: driver
 ## Mathematical model
 Estimated route travel time is `C_r(n_r) = a_r + b_r * n_r`, where `n_r` is the number of drivers on route `r`, `a_r` is base travel time, and `b_r` is the congestion factor.
 
-| Route | Base time | Congestion factor |
+| Alternative route (same destination) | Illustrative base time (min) | Congestion factor |
 |---|---:|---:|
-| Route A | 10.0 | 0.18 |
-| Route B | 13.0 | 0.10 |
-| Route C | 16.0 | 0.04 |
+| MUJ → Pacific Mall (Route A) | 40.0 | 0.18 |
+| MUJ → Pacific Mall (Route B) | 42.0 | 0.10 |
+| MUJ → Pacific Mall (Route C) | 44.0 | 0.04 |
 
-**These parameters are illustrative assumptions, not measured real-world traffic data.**
+**All three options have the same origin (MUJ) and destination (Pacific Mall, Mansarovar). Route A/B/C are modeled alternatives; times and congestion factors are illustrative assumptions, not live Google Maps measurements or verified road-corridor data.**
 
 Drivers switch only when another route offers a strictly lower estimated travel time. When a complete sweep produces no switches, the assignment is stable under the update rule. For this parallel-route congestion game, a stable assignment corresponds to a pure-strategy Nash equilibrium.
 
